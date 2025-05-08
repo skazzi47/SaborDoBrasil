@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "4Dgrt60vlYKhVX3/WziZ+pas7ZWjFMJa+E36Do1eAp4=",
+  "Source": "SaborDoBrasil",
+  "BasePath": "_content/SaborDoBrasil",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SaborDoBrasil\\wwwroot",
+      "Source": "SaborDoBrasil",
+      "ContentRoot": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\",
+      "BasePath": "_content/SaborDoBrasil",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\index.html",
+      "SourceId": "SaborDoBrasil",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\",
+      "BasePath": "_content/SaborDoBrasil",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}
