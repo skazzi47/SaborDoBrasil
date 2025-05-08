@@ -1,1 +1,148 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css");
+
+:root {
+  --laranja: #D97014;
+  --cinza-borda: #C2BEBE;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: Arial, sans-serif;
+}
+
+.perfil {
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.linha-laranja {
+  width: 80%;
+  height: 4px;
+  background-color: var(--laranja);
+}
+
+.main {
+  padding: 20px;
+}
+
+.publicacao {
+  background-color: #fffbe6;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.publicacao h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.legenda {
+  font-size: 14px;
+  color: #555;
+}
+
+.interacoes .interacao {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.login {
+  padding: 20px;
+  border-left: 1px solid #ddd;
+}
+
+.footer img {
+  filter: brightness(0) invert(1);
+}
+
+.modal-container,
+.modal-login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-box,
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-login.d-none {
+  display: none;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-content .form-label {
+  font-weight: 500;
+}
+
+.modal-content .form-control {
+  border-radius: 6px;
+}
+
+.modal-content .btn-outline-warning {
+  border-color: var(--laranja);
+  color: var(--laranja);
+}
+
+.modal-content .btn-outline-warning:hover {
+  background-color: var(--laranja);
+  color: #fff;
+}
+
+.modal-content .btn-warning {
+  background-color: var(--laranja);
+  border: none;
+  color: #fff;
+}
+
+.modal-content .btn-warning:hover {
+  background-color: #bd5e10;
+}
+
+input.is-invalid {
+  border-color: red !important;
+}
+
+#erro-login,
+#erro-cadastro {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Estilo específico para botões de troca entre login e cadastro */
+#modal-login .modal-footer a,
+#modal-cadastro .modal-footer a {
+  font-size: 0.9rem;
+  color: var(--laranja);
+  text-decoration: underline;
+  cursor: pointer;
+}

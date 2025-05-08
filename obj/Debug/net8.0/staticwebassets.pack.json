@@ -1,6 +1,26 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\logo_sabor_do_brasil.png",
+      "PackagePath": "staticwebassets\\img\\logo_sabor_do_brasil.png"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\misto quente.webp",
+      "PackagePath": "staticwebassets\\img\\misto quente.webp"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\muçela.jpg",
+      "PackagePath": "staticwebassets\\img\\muçela.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\sopa de macaco.webp",
+      "PackagePath": "staticwebassets\\img\\sopa de macaco.webp"
+    },
+    {
       "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
