@@ -1,148 +1,322 @@
+/* style.css */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css");
 
 :root {
   --laranja: #D97014;
   --cinza-borda: #C2BEBE;
+  --cinza-claro: #f5f5f5;
+  --cinza-texto: #555;
+  --sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Reset e estilos base */
 body {
-  background-color: #fff;
-  color: #000;
+  background-color: #f8f9fa;
+  color: #333;
   font-family: Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Navbar - Mantido igual */
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 15px 20px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-brand img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Layout principal - Atualizado */
+.container-fluid.fundo-publicacoes {
+  flex: 1;
+  padding: 20px 0;
+  background-color: #f8f9fa;
+}
+
+.row {
+  align-items: flex-start;
+}
+
+/* Perfil lateral - Mantido igual */
 .perfil {
-  background-color: #f9f9f9;
-  border-right: 1px solid #ddd;
+  background-color: white;
+  border-radius: 10px;
   padding: 20px;
+  box-shadow: var(--sombra);
+  text-align: center;
+  position: sticky;
+  top: 20px;
 }
 
-.logo {
-  width: 100px;
-  height: auto;
+.perfil img.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--laranja);
+  margin-bottom: 15px;
 }
 
 .linha-laranja {
   width: 80%;
-  height: 4px;
+  height: 3px;
   background-color: var(--laranja);
+  margin: 15px auto;
 }
 
-.main {
+/* Área de login - Mantido igual */
+.login {
+  background-color: white;
+  border-radius: 10px;
   padding: 20px;
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 20px;
+}
+
+/* Publicações - Atualizado */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.main h1 {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .publicacao {
-  background-color: #fffbe6;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--sombra);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publicacao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.publicacao img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
 .publicacao h2 {
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.legenda {
-  font-size: 14px;
-  color: #555;
+.publicacao .legenda {
+  text-align: center;
+  color: var(--cinza-texto);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
 }
 
-.interacoes .interacao {
+/* Interações - Atualizado */
+.interacoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.interacao {
   display: flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background-color: var(--cinza-claro);
+  transition: all 0.3s ease;
 }
 
-.login {
-  padding: 20px;
-  border-left: 1px solid #ddd;
+.interacao:hover {
+  background-color: #e9ecef;
+  transform: scale(1.05);
 }
 
-.footer img {
-  filter: brightness(0) invert(1);
+.interacao i {
+  font-size: 1rem;
 }
 
-.modal-container,
+/* Rodapé - Mantido igual */
+.footer {
+  background-color: var(--laranja);
+  color: white;
+  padding: 15px 20px;
+  margin-top: auto;
+}
+
+.footer a {
+  color: white;
+  transition: opacity 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.footer a:hover {
+  opacity: 0.8;
+}
+
+/* Modais - Atualizado */
 .modal-login {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1050;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
-.modal-box,
-.modal-content {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+.modal-login.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal-login.d-none {
-  display: none;
+  display: flex !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-login:not(.d-none) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: white; /* Fundo branco para o conteúdo do modal */
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
 }
 
 .modal-content h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.modal-content .form-label {
-  font-weight: 500;
+/* Responsividade - Atualizado */
+@media (max-width: 992px) {
+  .row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .perfil, .login {
+    position: static;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .main {
+    order: -1;
+  }
 }
 
-.modal-content .form-control {
-  border-radius: 6px;
+@media (max-width: 768px) {
+  .publicacao img {
+    height: 220px;
+  }
+  
+  .interacoes {
+    gap: 15px;
+  }
 }
 
-.modal-content .btn-outline-warning {
+@media (max-width: 576px) {
+  .publicacao {
+    padding: 15px;
+  }
+  
+  .publicacao img {
+    height: 180px;
+  }
+  
+  .interacoes {
+    gap: 10px;
+  }
+  
+  .interacao {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+  
+  .modal-content {
+    padding: 20px;
+  }
+}
+
+/* Estilização adicional para os elementos internos */
+.modal-header {
+  background-color: white; /* Garantindo que o cabeçalho também fique branco */
+  padding: 25px;
+  text-align: center;
+  border-bottom: 1px solid #eee; /* Linha divisória sutil */
+}
+
+.modal-body {
+  background-color: white; /* Garantindo que o corpo também fique branco */
+  padding: 25px;
+}
+
+/* Ajustes para os elementos de formulário */
+.form-control {
+  background-color: #f9f9f9; /* Fundo levemente cinza para os inputs */
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  background-color: white; /* Fundo branco quando em foco */
   border-color: var(--laranja);
-  color: var(--laranja);
 }
 
-.modal-content .btn-outline-warning:hover {
+/* Botões com contraste */
+.btn-primary {
   background-color: var(--laranja);
-  color: #fff;
+  color: white;
 }
 
-.modal-content .btn-warning {
-  background-color: var(--laranja);
-  border: none;
-  color: #fff;
-}
-
-.modal-content .btn-warning:hover {
-  background-color: #bd5e10;
-}
-
-input.is-invalid {
-  border-color: red !important;
-}
-
-#erro-login,
-#erro-cadastro {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 5px;
-}
-
-/* Estilo específico para botões de troca entre login e cadastro */
-#modal-login .modal-footer a,
-#modal-cadastro .modal-footer a {
-  font-size: 0.9rem;
-  color: var(--laranja);
-  text-decoration: underline;
-  cursor: pointer;
+/* Responsividade */
+@media (max-width: 576px) {
+  .modal-content {
+    margin: 0 15px;
+  }
 }

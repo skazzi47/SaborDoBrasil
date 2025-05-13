@@ -5,8 +5,24 @@
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\bobodecamarao.jpg",
+      "PackagePath": "staticwebassets\\img\\bobodecamarao.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\copnudous.webp",
+      "PackagePath": "staticwebassets\\img\\copnudous.webp"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\gostrofenoff.webp",
+      "PackagePath": "staticwebassets\\img\\gostrofenoff.webp"
+    },
+    {
       "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\logo_sabor_do_brasil.png",
       "PackagePath": "staticwebassets\\img\\logo_sabor_do_brasil.png"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\madeira.webp",
+      "PackagePath": "staticwebassets\\img\\madeira.webp"
     },
     {
       "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\misto quente.webp",
@@ -19,6 +35,10 @@
     {
       "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\sopa de macaco.webp",
       "PackagePath": "staticwebassets\\img\\sopa de macaco.webp"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\sopadegalinha.webp",
+      "PackagePath": "staticwebassets\\img\\sopadegalinha.webp"
     },
     {
       "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\index.html",
