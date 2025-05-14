@@ -58,9 +58,9 @@
 </div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="tex navbar-brand" href="#">
         <img src="./img/logo_sabor_do_brasil.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
         Sabor do Brasil
       </a>
@@ -86,8 +86,8 @@
         
         <!-- Publicação 1 -->
         <div class="publicacao mb-4 p-3 bg-white rounded">
-          <img src="img/sopadegalinha.webp" alt="Prato 1" class="img-fluid rounded mb-2">
-          <h2>Sopa de Galinha</h2>
+          <img src="img/suscuz.webp" alt="Prato 1" class="img-fluid rounded mb-2">
+          <h2>Cuscuz</h2>
           <p class="legenda">Restaurante Sabor do Brasil - Ipatinga</p>
           <div class="interacoes d-flex gap-4 mt-2">
             <div class="interacao" onclick="interagir('like', 1)">
@@ -99,7 +99,7 @@
               <span id="dislike-1">0</span>
             </div>
             <div class="interacao" onclick="interagir('comentario', 1)">
-              <i class="fas fa-comment" style="color: white;"></i>
+             <i class="bi bi-chat-right-text-fill" style="color:black;"></i>
               <span id="comentario-1">0</span>
             </div>
           </div>
@@ -107,8 +107,8 @@
         
         <!-- Publicação 2 -->
         <div class="publicacao mb-4 p-3 bg-white rounded">
-          <img src="img/gostrofenoff.webp" alt="Prato 2" class="img-fluid rounded mb-2">
-          <h2>Strogonoff</h2>
+          <img src="img/steaktartare.jpg" alt="Prato 2" class="img-fluid rounded mb-2">
+          <h2>Steak Tartare</h2>
           <p class="legenda">Restaurante Sabor do Brasil - Ipatinga</p>
           <div class="interacoes d-flex gap-4 mt-2">
             <div class="interacao" onclick="interagir('like', 2)">
@@ -120,7 +120,7 @@
               <span id="dislike-2">0</span>
             </div>
             <div class="interacao" onclick="interagir('comentario', 2)">
-              <i class="fas fa-comment" style="color: white;"></i>
+              <i class="bi bi-chat-right-text-fill" style="color:black;"></i
               <span id="comentario-2">0</span>
             </div>
           </div>
@@ -141,7 +141,7 @@
               <span id="dislike-3">0</span>
             </div>
             <div class="interacao" onclick="interagir('comentario', 3)">
-              <i class="fas fa-comment" style="color: white;"></i>
+              <i class="bi bi-chat-right-text-fill" style="color:black;"></i
               <span id="comentario-3">0</span>
             </div>
           </div>
@@ -156,8 +156,28 @@
     </div>
   </div>
 
+  <!-- Modifique a estrutura das colunas assim: -->
+<div class="row justify-content-center"> <!-- Centraliza as colunas -->
+  <!-- Coluna 1: Perfil (reduzida) -->
+  <aside class="col-lg-2 col-md-3 perfil text-center">
+    <!-- conteúdo permanece o mesmo -->
+  </aside>
+
+  <!-- Coluna 2: Publicações (principal) -->
+  <main class="col-lg-6 col-md-8 main"> <!-- Alterado para col-lg-6 -->
+    <!-- conteúdo permanece o mesmo -->
+  </main>
+
+  <!-- Coluna 3: Login (reduzida) -->
+  <aside class="col-lg-2 col-md-3 login d-flex align-items-start justify-content-center">
+    <!-- conteúdo permanece o mesmo -->
+  </aside>
+</div>
+
+
+
     <!-- Rodapé -->
-  <footer class="footer bg-warning text-white d-flex justify-content-between align-items-center px-4 py-2 mt-5">
+  <footer class="footer text-white d-flex justify-content-between align-items-center px-4 py-2 mt-5">
     <span>Sabor do Brasil</span>
     <div class="redes d-flex gap-3">
       <a href="https://instagram.com" target="_blank" class="text-white">
@@ -297,4 +317,4 @@ window.addEventListener('click', function(event) {
     
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
-</html> 
+</html>

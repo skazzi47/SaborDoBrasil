@@ -41,6 +41,14 @@
       "PackagePath": "staticwebassets\\img\\sopadegalinha.webp"
     },
     {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\steaktartare.jpg",
+      "PackagePath": "staticwebassets\\img\\steaktartare.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\suscuz.webp",
+      "PackagePath": "staticwebassets\\img\\suscuz.webp"
+    },
+    {
       "Id": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

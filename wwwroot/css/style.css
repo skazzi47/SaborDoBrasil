@@ -22,12 +22,13 @@ body {
 
 /* Navbar - Mantido igual */
 .navbar {
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: var(--laranja); /* Usa a variável laranja */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 15px 20px;
 }
 
 .navbar-brand {
+  background-color: var(--laranja); /* Usa a variável laranja */
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -35,6 +36,8 @@ body {
 }
 
 .navbar-brand img {
+  background-color: var(--laranja); /* Usa a variável laranja */
+;
   width: 30px;
   height: 30px;
 }
@@ -92,6 +95,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 25px;
+  max-width: 600px; /* Limita a largura máxima */
+  margin: 0 auto; /* Centraliza na tela */
+  width: 100%; /* Ocupa 100% até o máximo definido */
 }
 
 .main h1 {
@@ -107,11 +113,17 @@ body {
   padding: 20px;
   box-shadow: var(--sombra);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%; 
 }
 
 .publicacao:hover {
+  border: 1px solid #C2BEBE; /* Define a borda cinza */
+  border-radius: 12px; /* Mantém as bordas arredondadas */
+  padding: 20px; /* Espaçamento interno */
+  background-color: white; /* Fundo branco */
+  box-shadow: var(--sombra); /* Sombra existente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .publicacao img {
@@ -189,13 +201,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+  background-color:#f5f5f5(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   opacity: 0;
-  visibility: hidden;
+  visibility:hidden;
   transition: all 0.3s ease;
 }
 
@@ -215,8 +227,9 @@ body {
   visibility: visible;
 }
 
+/* Modal Login - Estilos atualizados */
 .modal-content {
-  background-color: white; /* Fundo branco para o conteúdo do modal */
+  background-color: white;
   border-radius: 12px;
   width: 100%;
   max-width: 420px;
@@ -224,6 +237,15 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transform: translateY(20px);
   transition: transform 0.3s ease;
+  padding: 25px; /* Adiciona padding interno */
+}
+
+.modal-login .modal-content {
+  border: 1px solid black; /* Define a borda preta */
+  border-radius: 8px; /* Mantém as bordas arredondadas */
+  background-color: white; /* Garante o fundo branco */
+  padding: 20px; /* Espaçamento interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra para destaque */
 }
 
 .modal-content h2 {
@@ -284,18 +306,20 @@ body {
   }
 }
 
-/* Estilização adicional para os elementos internos */
+/* Estilização do cabeçalho do modal */
 .modal-header {
-  background-color: white; /* Garantindo que o cabeçalho também fique branco */
-  padding: 25px;
+  background-color: white;
+  padding: 0 0 15px 0; /* Ajuste do padding */
   text-align: center;
-  border-bottom: 1px solid #eee; /* Linha divisória sutil */
+  border-bottom: none; /* Remove a linha divisória */
 }
 
+/* Estilização do corpo do modal */
 .modal-body {
-  background-color: white; /* Garantindo que o corpo também fique branco */
-  padding: 25px;
+  background-color: white;
+  padding: 0; /* Remove o padding padrão */
 }
+
 
 /* Ajustes para os elementos de formulário */
 .form-control {
@@ -319,4 +343,125 @@ body {
   .modal-content {
     margin: 0 15px;
   }
+}
+
+/* Adicione ao seu arquivo style.css */
+
+/* Ajuste geral do container */
+.container-fluid.fundo-publicacoes {
+  max-width: 1400px; /* Limita a largura máxima do container */
+  margin: 0 auto;
+}
+
+/* Estilo para as publicações */
+.main {
+  max-width: 800px; /* Define uma largura máxima para o conteúdo principal */
+  margin: 0 auto; /* Centraliza */
+}
+
+.publicacao {
+  max-width: 100%; /* Garante que não ultrapasse o container */
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 992px) {
+  .main {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
+
+/* Ajuste para telas muito grandes */
+@media (min-width: 1400px) {
+  .main {
+    max-width: 700px; /* Pode reduzir ainda mais se necessário */
+  }
+}
+
+.publicacao img {
+  width: 100%;
+  height: 350px; /* Você pode reduzir esta altura se quiser */
+  object-fit: cover; /* Mude de 'cover' para 'contain' para mostrar a imagem inteira */
+  background-color: #f5f5f5; /* Cor de fundo para áreas não preenchidas */
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Aplica os mesmos estilos para o modal de cadastro */
+#modal-cadastro .modal-content {
+  padding: 25px;
+}
+
+#modal-cadastro .mb-3 {
+  padding: 0 15px;
+}
+
+#modal-cadastro .d-flex.justify-content-end {
+  padding: 15px 15px 0 15px;
+  margin-top: 10px;
+}
+
+#modal-cadastro #erro-cadastro {
+  padding: 0 15px;
+}
+
+/* Ajuste dos campos de formulário */
+.modal-login .form-control {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 15px; /* Mais espaço interno */
+  margin-bottom: 15px; /* Espaço entre campos */
+}
+
+/* Container dos inputs - adiciona padding lateral */
+.modal-login .mb-3 {
+  padding: 0 15px; /* Espaço nas laterais */
+}
+
+/* Botões - ajuste de posicionamento */
+.modal-login .d-flex.justify-content-end {
+  padding: 15px 15px 0 15px; /* Espaço ao redor */
+  margin-top: 10px;
+}
+
+/* Mensagem de erro */
+.modal-login .text-danger {
+  padding: 0 15px; /* Alinhamento com os inputs */
+}
+
+/* Link de cadastro */
+.modal-login p.mt-3 {
+  padding: 15px;
+  margin-bottom: 0;
+  text-align: center;
+  border-top: 1px solid #eee; /* Linha divisória sutil */
+  margin-top: 15px;
+}
+
+.modal-content {
+  margin: 20px;
+  padding: 30px;
+}
+
+.modal-header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-body {
+  padding-top: 20px;
+}
+
+/* Estilo para inputs das modais de login e cadastro */
+.modal-login .form-control {
+  border: 1px solid black; /* Define a borda preta */
+  border-radius: 8px; /* Mantém as bordas arredondadas */
+  padding: 12px 15px; /* Espaçamento interno */
+  background-color: #f9f9f9; /* Fundo levemente cinza */
+}
+
+.modal-login .form-control:focus {
+  border-color: black; /* Mantém a borda preta ao focar */
+  outline: none; /* Remove o contorno padrão */
 }
