@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RVC+g5ii9tk/kzcga30RYf5R4N9OyDQVXcu72S6SwWA=",
+  "Hash": "ipOTRpBbf2kt9D1J1Zu7TTv//WIC0AIxBi9VKqLcUbE=",
   "Source": "SaborDoBrasil",
   "BasePath": "_content/SaborDoBrasil",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\copnudous.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\fundoalimentoslogin.avif",
+      "SourceId": "SaborDoBrasil",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\",
+      "BasePath": "_content/SaborDoBrasil",
+      "RelativePath": "img/fundoalimentoslogin.avif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\fundoalimentoslogin.avif"
     },
     {
       "Identity": "C:\\Users\\Alunos\\Projetos-GM\\SaborDoBrasil\\wwwroot\\img\\gostrofenoff.webp",

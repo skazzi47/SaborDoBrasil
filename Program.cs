@@ -1,14 +1,31 @@
+using Microsoft.EntityFrameworkCore;
+using SaborDoBrasil.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Adiciona o contexto do banco de dados
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
-app.UseDefaultFiles(); // Serve index.html por padrão
-app.UseStaticFiles(); // Permite servir arquivos da pasta wwwroot
-
-app.MapGet("/index", async context =>
+if (!app.Environment.IsDevelopment())
 {
-    await context.Response.SendFileAsync("wwwroot/index.html");
-});
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
 
-// app.MapGet("/", () => "Hello World!");
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
