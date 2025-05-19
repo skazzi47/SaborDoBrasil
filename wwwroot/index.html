@@ -57,6 +57,22 @@
   </div>
 </div>
 
+  <!-- Modal de Perfil do Usuário -->
+<div id="modal-perfil" class="modal-login d-none">
+  <div class="modal-content text-center">
+    <h2 class="mb-3">Meu Perfil</h2>
+    <div style="position: relative; display: inline-block; margin-bottom: 16px;">
+      <img id="foto-perfil-preview" src="/img/logo_sabor_do_brasil.png" alt="Foto de Perfil" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--laranja);">
+      <label for="input-foto-perfil" style="position: absolute; bottom: 0; right: 0; background: #fff; border-radius: 50%; border: 1px solid #ccc; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+        <i class="fas fa-pencil-alt" style="color: var(--laranja);"></i>
+        <input id="input-foto-perfil" type="file" accept="image/*" style="display: none;">
+      </label>
+    </div>
+    <h4 id="perfil-nome" class="mb-3"></h4>
+    <button class="btn btn-outline-warning" onclick="fecharModalPerfil()">Fechar</button>
+  </div>
+</div>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
@@ -197,41 +213,70 @@
   </footer>
 
   <script>
-    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-    let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado')) || null;
-  
-    function abrirModalLogin() {
-      document.getElementById('modal-login').classList.remove('d-none');
-    }
-  
-    function fecharModalLogin() {
-      document.getElementById('modal-login').classList.add('d-none');
-    }
-  
-    function abrirModalCadastro() {
-      fecharModalLogin();
-      document.getElementById('modal-cadastro').classList.remove('d-none');
-    }
-  
-    function fecharModalCadastro() {
-      document.getElementById('modal-cadastro').classList.add('d-none');
+    // Remove variáveis locais duplicadas e garanta escopo global
+    window.usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado')) || null;
+
+    window.abrirModalLogin = function() {
+      var modal = document.getElementById('modal-login');
+      modal.classList.remove('d-none');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('erro-credenciais').classList.add('d-none');
     }
 
-    function alternarParaLogin() {
-  fecharModalCadastro();
-  abrirModalLogin();
-}
-
-// Fechar modal ao clicar fora do conteúdo
-window.addEventListener('click', function(event) {
-  const modals = document.querySelectorAll('.modal-login.active');
-  modals.forEach(modal => {
-    if (event.target === modal) {
+    window.fecharModalLogin = function() {
+      var modal = document.getElementById('modal-login');
+      modal.classList.add('d-none');
       modal.classList.remove('active');
       document.body.style.overflow = 'auto';
     }
-  });
-});
+
+    window.abrirModalCadastro = function() {
+      window.fecharModalLogin();
+      var modal = document.getElementById('modal-cadastro');
+      modal.classList.remove('d-none');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('erro-cadastro').classList.add('d-none');
+    }
+
+    window.fecharModalCadastro = function() {
+      var modal = document.getElementById('modal-cadastro');
+      modal.classList.add('d-none');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    window.abrirModalPerfil = function() {
+      if (!window.usuarioLogado) return;
+      document.getElementById('perfil-nome').textContent = window.usuarioLogado.nome;
+      // Se já houver foto salva, exibe, senão mostra padrão
+      const foto = window.usuarioLogado.fotoPerfil || '/img/logo_sabor_do_brasil.png';
+      document.getElementById('foto-perfil-preview').src = foto;
+      document.getElementById('modal-perfil').classList.remove('d-none');
+      document.getElementById('modal-perfil').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    window.fecharModalPerfil = function() {
+      document.getElementById('modal-perfil').classList.add('d-none');
+      document.getElementById('modal-perfil').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fechar modal ao clicar fora do conteúdo
+    window.addEventListener('mousedown', function(event) {
+      var modalLogin = document.getElementById('modal-login');
+      var modalCadastro = document.getElementById('modal-cadastro');
+      if (modalLogin.classList.contains('active') && event.target === modalLogin) {
+        window.fecharModalLogin();
+      }
+      if (modalCadastro.classList.contains('active') && event.target === modalCadastro) {
+        window.fecharModalCadastro();
+      }
+    });
+  
+    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
   
     function cadastrarUsuario() {
       const nome = document.getElementById('nome-cadastro').value.trim();
@@ -257,28 +302,81 @@ window.addEventListener('click', function(event) {
     function validarLogin() {
       const email = document.getElementById('email').value.trim();
       const senha = document.getElementById('senha').value;
-  
-      const usuario = usuarios.find(u => u.email === email && u.senha === senha);
-  
-      if (usuario) {
-        usuarioLogado = usuario;
-        localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-        fecharModalLogin();
-        atualizarInterface();
-      } else {
-        document.getElementById('erro-credenciais').classList.remove('d-none');
+      const erroCredenciais = document.getElementById('erro-credenciais');
+      erroCredenciais.classList.add('d-none');
+      if (!email || !senha) {
+        erroCredenciais.textContent = 'Preencha todos os campos.';
+        erroCredenciais.classList.remove('d-none');
+        return;
       }
+      fetch('/api/usuarios/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha })
+      })
+      .then(async res => {
+        if (res.ok) {
+          const data = await res.json();
+          usuarioLogado = { nome: data.nome, email: data.email, fotoPerfil: data.foto };
+          localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+          fecharModalLogin();
+          atualizarInterface();
+        } else {
+          const data = await res.json();
+          erroCredenciais.textContent = data.erro || 'Usuário ou senha incorretos.';
+          erroCredenciais.classList.remove('d-none');
+        }
+      })
+      .catch(() => {
+        erroCredenciais.textContent = 'Erro de conexão com o servidor.';
+        erroCredenciais.classList.remove('d-none');
+      });
     }
   
+    // Upload da foto de perfil (apenas localStorage)
+    document.getElementById('input-foto-perfil').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('foto-perfil-preview').src = evt.target.result;
+        // Salva no usuarioLogado e localStorage
+        window.usuarioLogado.fotoPerfil = evt.target.result;
+        localStorage.setItem('usuarioLogado', JSON.stringify(window.usuarioLogado));
+        // Salva no banco de dados
+        fetch('/api/usuarios/atualizar-foto', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: window.usuarioLogado.email, foto: evt.target.result })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.sucesso) {
+            atualizarInterface();
+          } else {
+            alert(data.erro || 'Erro ao salvar foto no banco de dados.');
+          }
+        })
+        .catch(() => alert('Erro de conexão ao salvar foto.'));
+      };
+      reader.readAsDataURL(file);
+    });
+  
+    // Adiciona botão para abrir modal de perfil na interface logada
     function atualizarInterface() {
       const botaoLogin = document.querySelector('.login');
       if (usuarioLogado) {
         botaoLogin.innerHTML = `
           <div class="text-center mt-3">
-            <p><strong>${usuarioLogado.nome}</strong></p>
+            <div style='display: flex; flex-direction: column; align-items: center;'>
+              <img src="${usuarioLogado.fotoPerfil || '/img/logo_sabor_do_brasil.png'}" alt="Foto de Perfil" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--laranja); margin-bottom: 6px; cursor:pointer;" onclick="abrirModalPerfil()">
+              <p style='margin-bottom: 8px;'><strong>${usuarioLogado.nome}</strong></p>
+            </div>
             <button class="btn btn-outline-danger btn-sm" onclick="logout()">Sair</button>
           </div>
         `;
+      } else {
+        botaoLogin.innerHTML = `<button class='btn btn-warning mt-3' onclick='abrirModalLogin()'>Entrar</button>`;
       }
     }
   
@@ -311,6 +409,13 @@ window.addEventListener('click', function(event) {
         }
       }
     }
+  
+    // Abrir modal de login automaticamente ao entrar no site se não estiver logado
+    window.addEventListener('DOMContentLoaded', function() {
+      if (!window.usuarioLogado) {
+        abrirModalLogin();
+      }
+    });
   
     atualizarInterface();
   </script>

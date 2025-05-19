@@ -1,0 +1,22 @@
+@model IEnumerable<SaborDoBrasil.Models.Usuario>
+
+<h2>Lista de Usuários</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var usuario in Model)
+    {
+        <tr>
+            <td>@usuario.Id</td>
+            <td>@usuario.Nome</td>
+            <td>@usuario.Email</td>
+        </tr>
+    }
+    </tbody>
+</table>
