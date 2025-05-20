@@ -31,7 +31,11 @@ namespace SaborDoBrasil.Controllers
             {
                 return Conflict(new { erro = "Usuário já cadastrado." });
             }
-            // (Opcional) Hash da senha pode ser feito aqui
+            // Garante que o campo Foto nunca será nulo
+            if (string.IsNullOrWhiteSpace(usuario.Foto))
+            {
+                usuario.Foto = "/img/logo_sabor_do_brasil.png"; // Caminho padrão
+            }
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
             return Ok(new { sucesso = true });

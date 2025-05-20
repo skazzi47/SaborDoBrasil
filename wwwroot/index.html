@@ -22,9 +22,9 @@
     </div>
     <div class="mb-3" style="position: relative;">
       <label for="senha" class="form-label">Senha</label>
-      <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" />
-      <span id="toggleSenha" style="position: absolute; top: 38px; right: 16px; cursor: pointer; color: #888;">
-        <i class="fa fa-eye" id="iconeOlho"></i>
+      <input type="password" id="senha" class="form-control" placeholder="Digite sua senha" style="padding-right: 40px;" />
+      <span id="toggleSenha" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; pointer-events: auto;">
+        <i class="fa fa-eye" id="iconeOlho" style="font-size: 1.1em;"></i>
       </span>
       <small class="text-danger d-none" id="erro-senha">Senha inválida</small>
     </div>
@@ -49,9 +49,12 @@
       <label for="email-cadastro" class="form-label">E-mail</label>
       <input type="email" id="email-cadastro" class="form-control" placeholder="Digite seu e-mail" />
     </div>
-    <div class="mb-3">
+    <div class="mb-3" style="position: relative;">
       <label for="senha-cadastro" class="form-label">Senha</label>
-      <input type="password" id="senha-cadastro" class="form-control" placeholder="Crie uma senha" />
+      <input type="password" id="senha-cadastro" class="form-control" placeholder="Crie uma senha" style="padding-right: 40px;" />
+      <span id="toggleSenhaCadastro" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; pointer-events: auto;">
+        <i class="fa fa-eye" id="iconeOlhoCadastro" style="font-size: 1.1em;"></i>
+      </span>
     </div>
     <div class="d-flex justify-content-end gap-2">
       <button class="btn btn-outline-warning" onclick="fecharModalCadastro()">Cancelar</button>
@@ -451,6 +454,23 @@
           senhaInput.type = 'password';
           iconeOlho.classList.remove('fa-eye-slash');
           iconeOlho.classList.add('fa-eye');
+        }
+      });
+    }
+    // Alternar visualização da senha no cadastro
+    const senhaCadastroInput = document.getElementById('senha-cadastro');
+    const toggleSenhaCadastro = document.getElementById('toggleSenhaCadastro');
+    const iconeOlhoCadastro = document.getElementById('iconeOlhoCadastro');
+    if (toggleSenhaCadastro && senhaCadastroInput && iconeOlhoCadastro) {
+      toggleSenhaCadastro.addEventListener('click', function() {
+        if (senhaCadastroInput.type === 'password') {
+          senhaCadastroInput.type = 'text';
+          iconeOlhoCadastro.classList.remove('fa-eye');
+          iconeOlhoCadastro.classList.add('fa-eye-slash');
+        } else {
+          senhaCadastroInput.type = 'password';
+          iconeOlhoCadastro.classList.remove('fa-eye-slash');
+          iconeOlhoCadastro.classList.add('fa-eye');
         }
       });
     }
